@@ -11,8 +11,9 @@ export default function Home() {
       <section className="hero">
         <div className="heroImage">
           <img
-            src="https://images.unsplash.com/photo-1538485399081-7c8ed389784c?auto=format&fit=crop&w=1800&q=80"
-            alt="A refined Seoul street scene for beauty travelers"
+            src="/images/seoul-editorial-street.webp"
+            alt="A quiet contemporary Seoul street in late-afternoon light"
+            fetchPriority="high"
           />
         </div>
         <div className="heroCopy">
