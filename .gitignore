@@ -1,0 +1,13 @@
+.next/
+out/
+node_modules/
+node_modules_broken_*/
+.env*
+!.env.example
+.wrangler/
+*.log
+.secrets.local.json
+tools/node_modules/
+tools/_artifacts/
+
+.vercel
