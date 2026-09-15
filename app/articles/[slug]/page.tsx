@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { articles, getArticle } from "@/lib/content";
 import { TrackedLink } from "@/components/TrackedLink";
+import { ArticleContent } from "@/components/ArticleContent";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -43,10 +44,12 @@ export default async function ArticlePage({ params }: Props) {
           <span>{article.readTime}</span>
           <span>Updated {article.updated}</span>
           {article.reviewed ? <span>Reviewed editorial guide</span> : <span>Editorial guide</span>}
+          {article.reviewNote && <span>{article.reviewNote}</span>}
         </div>
         <div className="articleHeroImage">
           <img src={article.image} alt={article.imageAlt} />
         </div>
+        {article.imageCredit && <p className="articleImageCredit">{article.imageCredit}</p>}
         <section className="takeaways">
           <p className="eyebrow">Key takeaways</p>
           <ul>
@@ -55,6 +58,7 @@ export default async function ArticlePage({ params }: Props) {
             ))}
           </ul>
         </section>
+        {article.contentBlocks ? <ArticleContent article={article} /> : <>
         <h2>Guide</h2>
         {article.body.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
@@ -67,6 +71,7 @@ export default async function ArticlePage({ params }: Props) {
             ))}
           </ul>
         </section>
+        </>}
       </div>
       <aside className="articleAside">
         <div className="sideBox">

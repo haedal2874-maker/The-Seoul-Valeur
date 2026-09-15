@@ -1,3 +1,10 @@
+import { pdrnArticle } from "./pdrn-article";
+
+export type ArticleBlock =
+  | { kind: "p" | "h2" | "cta" | "note"; text: string; refs?: string[] }
+  | { kind: "table"; rows: string[][] }
+  | { kind: "list"; items: string[] };
+
 export type Category = {
   slug: string;
   name: string;
@@ -21,6 +28,11 @@ export type Article = {
   takeaways: string[];
   body: string[];
   checklist: string[];
+  contentBlocks?: ArticleBlock[];
+  sources?: { id: string; title: string; url: string }[];
+  relatedLinks?: { title: string; href: string }[];
+  imageCredit?: string;
+  reviewNote?: string;
 };
 
 export const categories: Category[] = [
@@ -57,6 +69,7 @@ export const categories: Category[] = [
 ];
 
 export const articles: Article[] = [
+  pdrnArticle,
   {
     slug: "what-is-rejuran-in-korea",
     title: "What Is Rejuran in Korea?",

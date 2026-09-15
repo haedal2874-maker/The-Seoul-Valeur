@@ -390,6 +390,23 @@ button:disabled {
   background: var(--champagne);
 }
 
+.articleBody { min-width: 0; }
+.articleBody h1 { font-size: 60px; line-height: 1.08; overflow-wrap: anywhere; }
+.articleImageCredit { margin-top: -24px; font-size: 12px; }
+.richArticle { font-size: 17px; line-height: 1.7; }
+.richArticle a { text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.richArticle li { margin: 10px 0; color: var(--ink-soft); }
+.articleReference { font-size: 12px; }
+.articleNote { font-size: 14px; }
+.articleTableWrap { overflow-x: auto; margin: 24px 0; }
+.articleTableWrap table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.articleTableWrap th, .articleTableWrap td { padding: 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .articleBody h1 { font-size: 38px; }
+  .articleBody h2 { font-size: 28px; line-height: 1.15; }
+  .articleTableWrap th, .articleTableWrap td { padding: 8px; }
+}
+
 .articleBody h2 {
   margin-top: 36px;
   font-size: 34px;
