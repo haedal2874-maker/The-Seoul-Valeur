@@ -27,7 +27,7 @@ export default function PartnerPage() {
           </section>
           <TrackedLink
             className="buttonPrimary"
-            href="/ask-korean-unnie"
+            href="/contact?type=general"
             eventName="partner_interest"
             eventParams={{ cta_name: "partner_inquiry", cta_location: "partner_page", destination_type: "inquiry" }}
           >

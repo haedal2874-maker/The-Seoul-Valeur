@@ -83,12 +83,12 @@ export default async function ArticlePage({ params }: Props) {
           </p>
         </div>
         <div className="sideBox">
-          <p className="eyebrow">Soft CTA</p>
+          <p className="eyebrow">Plan your visit</p>
           <h3>Ask before booking</h3>
           <p>Tell us your travel dates, skin concern, and what you are trying to understand.</p>
           <TrackedLink
             className="buttonPrimary"
-            href="/ask-korean-unnie"
+            href={`/contact?article=${encodeURIComponent(article.slug)}`}
             eventName="cta_click"
             eventParams={{
               cta_name: "plan_beauty_trip",
@@ -97,7 +97,7 @@ export default async function ArticlePage({ params }: Props) {
               content_category: article.categorySlug
             }}
           >
-            Plan your Seoul beauty trip
+            Ask about a clinic visit
           </TrackedLink>
         </div>
       </aside>

@@ -27,11 +27,11 @@ export default function Home() {
             <a className="buttonPrimary" href="/start-here">Start Here</a>
             <TrackedLink
               className="buttonSecondary"
-              href="/ask-korean-unnie"
+              href="/contact"
               eventName="cta_click"
               eventParams={{ cta_name: "ask_before_booking", cta_location: "home_hero", destination_type: "inquiry" }}
             >
-              Ask before booking
+              Ask about a clinic visit
             </TrackedLink>
           </div>
         </div>
@@ -85,19 +85,19 @@ export default function Home() {
       </section>
 
       <section className="ctaBand">
-        <p className="eyebrow">Ask Korean Unnie</p>
-        <h2>Need help understanding Korean clinic terms before booking?</h2>
+        <p className="eyebrow">Plan your visit</p>
+        <h2>Thinking about a clinic visit in Korea?</h2>
         <p>
           Share your travel dates, beauty concern, and questions. We will help you prepare
           the right questions before you make a decision.
         </p>
         <TrackedLink
           className="buttonPrimary"
-          href="/ask-korean-unnie"
+          href="/contact"
           eventName="cta_click"
           eventParams={{ cta_name: "plan_beauty_trip", cta_location: "home_bottom", destination_type: "inquiry" }}
         >
-          Plan your Seoul beauty trip
+          Ask about a clinic visit
         </TrackedLink>
       </section>
     </>

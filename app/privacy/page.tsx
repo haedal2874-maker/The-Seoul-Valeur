@@ -15,6 +15,10 @@ export default function PrivacyPage() {
       <h2>Inquiry information</h2>
       <p>
         When you submit an inquiry, we store the details you provide so we can review and reply.
+        These include your name, email, country of residence, preferred language, inquiry type,
+        message and, for clinic inquiries, your area of interest, visit plans and optional budget. We also
+        record the referring article when supplied by a site link, and campaign tags. Inquiries are
+        processed through Cloudflare and stored in Google Sheets for our team to review.
         Inquiry fields are not sent to Google Analytics. Please avoid sharing identification
         numbers, medical records, photographs, or other highly sensitive information.
       </p>
@@ -31,7 +35,7 @@ export default function PrivacyPage() {
       </p>
       <h2>Contact</h2>
       <p>
-        For access, correction, or deletion questions about an inquiry, use the Ask page and
+        For access, correction, or deletion questions about an inquiry, use the <a href="/contact?type=general">Contact page</a> and
         write “Privacy request” at the beginning of your message.
       </p>
     </section>

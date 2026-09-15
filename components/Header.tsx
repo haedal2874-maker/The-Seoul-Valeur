@@ -12,7 +12,7 @@ export function Header() {
               {category.name}
             </a>
           ))}
-          <a href="/ask-korean-unnie">Ask</a>
+          <a href="/contact">Contact</a>
           <a href="/partner-with-us">Partner</a>
         </nav>
       </div>

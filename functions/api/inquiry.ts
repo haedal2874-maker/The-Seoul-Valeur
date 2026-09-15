@@ -10,6 +10,13 @@ type Context = {
 };
 
 type InquiryPayload = {
+  formVersion?: unknown;
+  inquiryType?: unknown;
+  country?: unknown;
+  language?: unknown;
+  visitPlan?: unknown;
+  article?: unknown;
+  budget?: unknown;
   name?: unknown;
   contact?: unknown;
   travelTiming?: unknown;
@@ -55,6 +62,12 @@ export async function onRequestPost({ request, env }: Context) {
   } catch {
     return json({ ok: false, message: "Invalid request." }, 400);
   }
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
+    return json({ ok: false, message: "Invalid request." }, 400);
+  }
+  if (raw.formVersion !== undefined && raw.formVersion !== 2) {
+    return json({ ok: false, message: "Please refresh the contact page and try again." }, 400);
+  }
 
   const payload = {
     name: textValue(raw.name, limits.name),
@@ -73,6 +86,39 @@ export async function onRequestPost({ request, env }: Context) {
     return json({ ok: false, message: "Please complete all required fields and consent." }, 400);
   }
 
+  if (raw.formVersion === 2) {
+    const country = textValue(raw.country, 80).replace(/[\r\n]/g, " ");
+    const language = textValue(raw.language, 60).replace(/[\r\n]/g, " ");
+    const clinic = raw.inquiryType === "clinic";
+    if (!["clinic", "general"].includes(String(raw.inquiryType)) || !country || !language ||
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.contact) ||
+        (clinic && (!["dermatology", "plastic-surgery", "not-sure"].includes(payload.interest) ||
+          !["exploring", "approximate", "dates-set"].includes(String(raw.visitPlan)) ||
+          (raw.visitPlan !== "exploring" && !payload.travelTiming)))) {
+      return json({ ok: false, message: "Please check your email, contact details and visit plans." }, 400);
+    }
+    // Keep the deployed Sheets contract: new context lives in the existing question cell.
+    const article = textValue(raw.article, 160);
+    const budget = textValue(raw.budget, 120).replace(/[\r\n]/g, " ");
+    const context = [
+      `Inquiry type: ${clinic ? "Clinic visit" : "General inquiry"}`,
+      `Country of residence: ${country}`,
+      `Preferred language: ${language}`,
+      "Consent: inquiry response (contact v2)",
+      ...(clinic && budget ? [`Budget (optional): ${budget}`] : []),
+      ...(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(article) ? [`Article: /articles/${article}`] : [])
+    ];
+    payload.question = context.join("\n") + "\n\nMessage:\n" + payload.question;
+    payload.interest = clinic ? payload.interest : "general";
+    payload.travelTiming = clinic
+      ? `${raw.visitPlan}${raw.visitPlan === "exploring" ? "" : `: ${payload.travelTiming}`}`
+      : "";
+  }
+  if (!turnstileToken) {
+    return json({ ok: false, message: "Please complete the security check." }, 403);
+  }
+
+  try {
   const verification = new FormData();
   verification.set("secret", env.TURNSTILE_SECRET_KEY);
   verification.set("response", turnstileToken);
@@ -108,4 +154,7 @@ export async function onRequestPost({ request, env }: Context) {
   }
 
   return json({ ok: true, submissionId });
+  } catch {
+    return json({ ok: false, message: "We could not confirm receipt. Please try again shortly." }, 502);
+  }
 }
