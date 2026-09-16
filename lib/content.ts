@@ -1,4 +1,5 @@
 import { pdrnArticle } from "./pdrn-article";
+import { seoulKbeautyShoppingArticle } from "./seoul-kbeauty-shopping-article";
 
 export type ArticleBlock =
   | { kind: "p" | "h2" | "cta" | "note"; text: string; refs?: string[] }
@@ -69,6 +70,7 @@ export const categories: Category[] = [
 ];
 
 export const articles: Article[] = [
+  seoulKbeautyShoppingArticle,
   pdrnArticle,
   {
     slug: "what-is-rejuran-in-korea",

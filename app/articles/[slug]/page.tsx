@@ -34,6 +34,8 @@ export default async function ArticlePage({ params }: Props) {
     notFound();
   }
 
+  const isGeneralGuide = ["k-beauty-products", "beauty-trip-seoul"].includes(article.categorySlug);
+
   return (
     <article className="articlePage">
       <div className="articleBody">
@@ -76,19 +78,22 @@ export default async function ArticlePage({ params }: Props) {
       <aside className="articleAside">
         <div className="sideBox">
           <p className="eyebrow">Editorial note</p>
-          <h3>No before-and-after promises.</h3>
+          <h3>{isGeneralGuide ? "A guide, not a guarantee." : "No before-and-after promises."}</h3>
           <p>
-            This magazine explains terms and planning questions. Treatment decisions should be
-            made with qualified professionals.
+            {isGeneralGuide
+              ? "This magazine helps you compare options and plan your trip. Details can change, so check current information before acting."
+              : "This magazine explains terms and planning questions. Treatment decisions should be made with qualified professionals."}
           </p>
         </div>
         <div className="sideBox">
           <p className="eyebrow">Plan your visit</p>
-          <h3>Ask before booking</h3>
-          <p>Tell us your travel dates, skin concern, and what you are trying to understand.</p>
+          <h3>{isGeneralGuide ? "Ask a planning question" : "Ask before booking"}</h3>
+          <p>{isGeneralGuide
+            ? "Tell us your travel dates and what you are trying to plan or compare."
+            : "Tell us your travel dates, skin concern, and what you are trying to understand."}</p>
           <TrackedLink
             className="buttonPrimary"
-            href={`/contact?article=${encodeURIComponent(article.slug)}`}
+            href={`/contact?type=${isGeneralGuide ? "general" : "clinic"}&article=${encodeURIComponent(article.slug)}`}
             eventName="cta_click"
             eventParams={{
               cta_name: "plan_beauty_trip",
@@ -97,7 +102,7 @@ export default async function ArticlePage({ params }: Props) {
               content_category: article.categorySlug
             }}
           >
-            Ask about a clinic visit
+            {isGeneralGuide ? "Ask a general question" : "Ask about a clinic visit"}
           </TrackedLink>
         </div>
       </aside>
