@@ -31,6 +31,7 @@ export type Article = {
   checklist: string[];
   contentBlocks?: ArticleBlock[];
   sources?: { id: string; title: string; url: string }[];
+  showSources?: boolean;
   relatedLinks?: { title: string; href: string }[];
   imageCredit?: string;
   reviewNote?: string;

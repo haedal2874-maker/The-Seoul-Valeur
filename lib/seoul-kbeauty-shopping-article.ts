@@ -174,6 +174,7 @@ export const seoulKbeautyShoppingArticle = {
       "url": "https://www.reddit.com/r/KoreaTravelBeauty/comments/1w4mdn1/first_timer_completely_overwhelmed_at_olive_young/"
     }
   ],
+  "showSources": false,
   "relatedLinks": [
     {
       "title": "Korea Beauty Trip Checklist Before Visiting a Clinic",

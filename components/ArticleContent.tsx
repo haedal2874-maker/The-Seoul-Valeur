@@ -15,7 +15,7 @@ export function ArticleContent({ article }: { article: Article }) {
         );
         if (block.kind === "list") return <ol key={index}>{block.items.map((item, i) => <li key={i}>{item}</li>)}</ol>;
         return <p key={index} className={block.kind === "note" ? "articleNote" : undefined}>
-          {block.text}{block.refs?.map(id => {
+          {block.text}{article.showSources !== false && block.refs?.map(id => {
             const source = article.sources?.find(s => s.id === id);
             return source ? <a className="articleReference" href={source.url} key={id} aria-label={`Source: ${source.title}`}> [{id}]</a> : null;
           })}
@@ -25,7 +25,7 @@ export function ArticleContent({ article }: { article: Article }) {
         <h2 id="related-heading">Keep reading</h2>
         <ul>{article.relatedLinks.map(link => <li key={link.href}><a href={link.href}>{link.title}</a></li>)}</ul>
       </section>}
-      {!!article.sources?.length && <section aria-labelledby="sources-heading">
+      {article.showSources !== false && !!article.sources?.length && <section aria-labelledby="sources-heading">
         <h2 id="sources-heading">Sources</h2>
         <ul>{article.sources.map(source => <li key={source.id}><a href={source.url}>{source.id}: {source.title}</a></li>)}</ul>
       </section>}
