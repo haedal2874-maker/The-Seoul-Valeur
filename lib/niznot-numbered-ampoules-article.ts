@@ -12,7 +12,6 @@ export const niznotNumberedAmpoulesArticle = {
   "readTime": "6 min read",
   "updated": "2026-09-17",
   "reviewed": false,
-  "reviewNote": "Independent product edit. No hands-on product testing was conducted.",
   "seoKeywords": [
     "NizNoT ampoule",
     "Korean numbered ampoules",
@@ -153,10 +152,6 @@ export const niznotNumberedAmpoulesArticle = {
     {
       "kind": "cta",
       "text": "Planning a Seoul K-beauty shopping list? Read our guide to shopping without buying every viral product, then save the NizNoT number you want to inspect more closely."
-    },
-    {
-      "kind": "note",
-      "text": "Independent editorial introduction based on product packaging and official brand information. The Seoul Valeur did not conduct a hands-on product test. This is not a diagnosis or a guarantee of cosmetic results."
     }
   ],
   "sources": [
