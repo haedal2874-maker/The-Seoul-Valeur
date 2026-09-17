@@ -64,12 +64,10 @@ img {
 .logoMark {
   width: 48px;
   height: 48px;
-  border: 1px solid var(--black);
-  display: grid;
-  place-items: center;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 14px;
-  letter-spacing: 0;
+  display: block;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: contain;
 }
 
 .logoText span {
