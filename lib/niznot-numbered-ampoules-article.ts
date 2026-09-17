@@ -6,7 +6,7 @@ export const niznotNumberedAmpoulesArticle = {
   "dek": "A first look at the Korean brand's 02-to-06 ampoule system, and how to read it without buying every bottle.",
   "category": "K Beauty Products",
   "categorySlug": "k-beauty-products",
-  "image": "/images/niznot-numbered-ampoules.png",
+  "image": "/images/niznot-numbered-ampoules-editorial.png",
   "imageAlt": "Real NizNoT ampoule bottles 02 to 06 arranged in an editorial collage.",
   "imageCredit": "Product images courtesy of NizNoT; editorial composition by The Seoul Valeur.",
   "readTime": "6 min read",
