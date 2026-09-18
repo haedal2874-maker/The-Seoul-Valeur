@@ -3,7 +3,7 @@ import type { Article } from "./content";
 export const seoulPersonalColorAnalysisArticle = {
   "slug": "what-happens-at-a-personal-color-analysis-in-seoul",
   "title": "What Actually Happens at a Personal Color Analysis in Seoul?",
-  "dek": "A calm guide to the drapes, seasonal labels, booking questions and shopping choices that come after the session.",
+  "dek": "From color draping to makeup shades, here’s what to expect—and what to ask before you book.",
   "category": "Beauty Trip Seoul",
   "categorySlug": "beauty-trip-seoul",
   "image": "/images/seoul-personal-color-analysis.png",
