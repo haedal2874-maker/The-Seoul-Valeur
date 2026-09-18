@@ -28,6 +28,7 @@ type InquiryPayload = {
   utmSource?: unknown;
   utmMedium?: unknown;
   utmCampaign?: unknown;
+  utmContent?: unknown;
 };
 
 const limits = {
@@ -90,7 +91,7 @@ export async function onRequestPost({ request, env }: Context) {
     const country = textValue(raw.country, 80).replace(/[\r\n]/g, " ");
     const language = textValue(raw.language, 60).replace(/[\r\n]/g, " ");
     const clinic = raw.inquiryType === "clinic";
-    if (!["clinic", "general"].includes(String(raw.inquiryType)) || !country || !language ||
+    if (!["clinic", "general"].includes(String(raw.inquiryType)) ||
         !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.contact) ||
         (clinic && (!["dermatology", "plastic-surgery", "not-sure"].includes(payload.interest) ||
           !["exploring", "approximate", "dates-set"].includes(String(raw.visitPlan)) ||
@@ -100,12 +101,14 @@ export async function onRequestPost({ request, env }: Context) {
     // Keep the deployed Sheets contract: new context lives in the existing question cell.
     const article = textValue(raw.article, 160);
     const budget = textValue(raw.budget, 120).replace(/[\r\n]/g, " ");
+    const utmContent = textValue(raw.utmContent, 120);
     const context = [
       `Inquiry type: ${clinic ? "Clinic visit" : "General inquiry"}`,
-      `Country of residence: ${country}`,
-      `Preferred language: ${language}`,
+      `Country of residence: ${country || "Not provided"}`,
+      `Preferred language: ${language || "Not provided"}`,
       "Consent: inquiry response (contact v2)",
       ...(clinic && budget ? [`Budget (optional): ${budget}`] : []),
+      ...(/^[a-zA-Z0-9_.-]{1,120}$/.test(utmContent) ? [`Campaign content: ${utmContent}`] : []),
       ...(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(article) ? [`Article: /articles/${article}`] : [])
     ];
     payload.question = context.join("\n") + "\n\nMessage:\n" + payload.question;

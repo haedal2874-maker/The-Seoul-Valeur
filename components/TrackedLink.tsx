@@ -1,6 +1,7 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { inquiryCampaignHref } from "@/lib/campaign";
 import { trackEvent, type AnalyticsEventName, type AnalyticsEventParams } from "@/lib/analytics";
 
 type Props = {
@@ -12,9 +13,13 @@ type Props = {
 };
 
 export function TrackedLink({ href, className, eventName, eventParams, children }: Props) {
+  const [destination, setDestination] = useState(href);
+  useEffect(() => {
+    setDestination(inquiryCampaignHref(href, window.location.href));
+  }, [href]);
   return (
     <a
-      href={href}
+      href={destination}
       className={className}
       onClick={() => trackEvent(eventName, { ...eventParams, page_path: window.location.pathname })}
     >

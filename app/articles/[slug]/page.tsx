@@ -86,23 +86,23 @@ export default async function ArticlePage({ params }: Props) {
           </p>
         </div>
         <div className="sideBox">
-          <p className="eyebrow">Plan your visit</p>
-          <h3>{isGeneralGuide ? "Ask a planning question" : "Ask before booking"}</h3>
+          <p className="eyebrow">{isGeneralGuide ? "Keep exploring" : "Clinic visit support"}</p>
+          <h3>{isGeneralGuide ? "More for your Seoul trip" : "Need help arranging your visit?"}</h3>
           <p>{isGeneralGuide
-            ? "Tell us your travel dates and what you are trying to plan or compare."
-            : "Tell us your travel dates, skin concern, and what you are trying to understand."}</p>
+            ? "Explore our product guides and beauty stops to plan what you want to try in Seoul."
+            : "We help with clinic connections, appointments, language support and follow-up contact. Tell us what you need and roughly when you plan to visit."}</p>
           <TrackedLink
             className="buttonPrimary"
-            href={`/contact?type=${isGeneralGuide ? "general" : "clinic"}&article=${encodeURIComponent(article.slug)}`}
+            href={isGeneralGuide ? "/category/beauty-trip-seoul/" : `/contact?type=clinic&article=${encodeURIComponent(article.slug)}`}
             eventName="cta_click"
             eventParams={{
-              cta_name: "plan_beauty_trip",
+              cta_name: isGeneralGuide ? "explore_beauty_trip" : "clinic_visit_support",
               cta_location: "article_sidebar",
-              destination_type: "inquiry",
+              destination_type: isGeneralGuide ? "category" : "inquiry",
               content_category: article.categorySlug
             }}
           >
-            {isGeneralGuide ? "Ask a general question" : "Ask about a clinic visit"}
+            {isGeneralGuide ? "Explore Seoul beauty guides" : "Ask about visit support"}
           </TrackedLink>
         </div>
       </aside>

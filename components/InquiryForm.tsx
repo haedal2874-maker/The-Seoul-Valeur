@@ -107,7 +107,8 @@ export function InquiryForm() {
       article: query.get("article") ?? "",
       utmSource: query.get("utm_source") ?? "",
       utmMedium: query.get("utm_medium") ?? "",
-      utmCampaign: query.get("utm_campaign") ?? ""
+      utmCampaign: query.get("utm_campaign") ?? "",
+      utmContent: query.get("utm_content") ?? ""
     };
 
     setStatus("submitting");
@@ -168,8 +169,7 @@ export function InquiryForm() {
         {inquiryType === "general" && <p className="formNotice">Questions about an article or something else? Send us a message.</p>}
         {inquiryType === "clinic" && <>
           <label>Area of interest
-            <select name="interest" defaultValue="" required>
-              <option value="" disabled>Select one</option>
+            <select name="interest" defaultValue="not-sure" required>
               <option value="dermatology">Dermatology</option>
               <option value="plastic-surgery">Plastic surgery</option>
               <option value="not-sure">Not sure yet</option>
@@ -201,8 +201,8 @@ export function InquiryForm() {
           Email
           <input type="email" name="contact" autoComplete="email" maxLength={160} required placeholder="you@example.com" />
         </label>
-        <label>Country of residence<input name="country" autoComplete="country-name" maxLength={80} required /></label>
-        <label>Preferred language<input name="language" maxLength={60} required placeholder="For example: English" /></label>
+        <label>Country of residence (optional)<input name="country" autoComplete="country-name" maxLength={80} /></label>
+        <label>Preferred language (optional)<input name="language" maxLength={60} placeholder="For example: English" /></label>
         </div>
         <p className="formNotice">We will confirm whether support in your preferred language is available.</p>
         <label className="checkboxLabel">

@@ -16,7 +16,7 @@ test('contact validation, Sheets compatibility and service failures', async () =
     return Response.json({ok:storage});
   };
   try {
-    for (const body of [null, [], {...base,consent:false}, {...base,contact:'bad'}, {...base,country:''}, {...base,language:''}, {...base,interest:'invalid'}, {...base,visitPlan:'dates-set'}, {...base,inquiryType:'invalid'}, {...base,formVersion:3}]) {
+    for (const body of [null, [], {...base,consent:false}, {...base,contact:'bad'}, {...base,interest:'invalid'}, {...base,visitPlan:'dates-set'}, {...base,inquiryType:'invalid'}, {...base,formVersion:3}]) {
       assert.equal((await send(body)).status,400);
     }
     assert.equal((await send({...base,turnstileToken:''})).status,403);
@@ -26,6 +26,10 @@ test('contact validation, Sheets compatibility and service failures', async () =
     assert.match(stored.question,/Article: \/articles\/pdrn-skincare-and-clinic-treatments/);
     assert.match(stored.question,/Message:\nA planning question$/);
     assert.equal(stored.travelTiming,'exploring');
+    assert.equal((await send({...base,country:'',language:'',utmSource:'threads',utmCampaign:'tsv_20260921_d01',utmContent:'clinic_choice'})).status,200);
+    assert.match(stored.question,/Country of residence: Not provided/);
+    assert.match(stored.question,/Campaign content: clinic_choice/);
+    assert.equal(stored.utmCampaign,'tsv_20260921_d01');
     assert.equal((await send({...base,visitPlan:'dates-set',travelTiming:'March 8 to 15',budget:'USD 2000'})).status,200);
     assert.match(stored.question,/Budget \(optional\): USD 2000/);
     assert.equal(stored.travelTiming,'dates-set: March 8 to 15');

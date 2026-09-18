@@ -1,4 +1,5 @@
 import { pdrnArticle } from "./pdrn-article";
+import { clinicQuoteArticle } from "./clinic-quote-article";
 import { seoulKbeautyShoppingArticle } from "./seoul-kbeauty-shopping-article";
 import { seoulClinicShortTripArticle } from "./seoul-clinic-short-trip-article";
 import { niznotNumberedAmpoulesArticle } from "./niznot-numbered-ampoules-article";
@@ -74,6 +75,7 @@ export const categories: Category[] = [
 ];
 
 export const articles: Article[] = [
+  clinicQuoteArticle,
   seoulPersonalColorAnalysisArticle,
   niznotNumberedAmpoulesArticle,
   seoulClinicShortTripArticle,

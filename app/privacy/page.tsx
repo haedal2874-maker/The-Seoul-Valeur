@@ -15,9 +15,9 @@ export default function PrivacyPage() {
       <h2>Inquiry information</h2>
       <p>
         When you submit an inquiry, we store the details you provide so we can review and reply.
-        These include your name, email, country of residence, preferred language, inquiry type,
+        These include your name, email, optional country of residence and preferred language, inquiry type,
         message and, for clinic inquiries, your area of interest, visit plans and optional budget. We also
-        record the referring article when supplied by a site link, and campaign tags. Inquiries are
+        record the referring article when supplied by a site link, and campaign tags carried from that article to the inquiry page. These tags are not stored in an additional browser cookie. Inquiries are
         processed through Cloudflare and stored in Google Sheets for our team to review.
         Inquiry fields are not sent to Google Analytics. Please avoid sharing identification
         numbers, medical records, photographs, or other highly sensitive information.
