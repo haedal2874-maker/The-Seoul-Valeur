@@ -4,6 +4,7 @@ import { seoulKbeautyShoppingArticle } from "./seoul-kbeauty-shopping-article";
 import { seoulClinicShortTripArticle } from "./seoul-clinic-short-trip-article";
 import { niznotNumberedAmpoulesArticle } from "./niznot-numbered-ampoules-article";
 import { seoulPersonalColorAnalysisArticle } from "./seoul-personal-color-analysis-article";
+import { seoulKbeautyPopupsArticle } from "./seoul-kbeauty-popups-article";
 
 export type ArticleBlock =
   | { kind: "p" | "h2" | "cta" | "note"; text: string; refs?: string[] }
@@ -75,6 +76,7 @@ export const categories: Category[] = [
 ];
 
 export const articles: Article[] = [
+  seoulKbeautyPopupsArticle,
   clinicQuoteArticle,
   seoulPersonalColorAnalysisArticle,
   niznotNumberedAmpoulesArticle,
