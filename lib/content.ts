@@ -7,6 +7,7 @@ import { seoulPersonalColorAnalysisArticle } from "./seoul-personal-color-analys
 import { seoulKbeautyPopupsArticle } from "./seoul-kbeauty-popups-article";
 import { seoulKbeautyWorthBuyingArticle } from "./seoul-kbeauty-worth-buying-article";
 import { seoulHeadSpaArticle } from "./seoul-head-spa-article";
+import { kbeautyTonerPadsArticle } from "./kbeauty-toner-pads-article";
 
 export type ArticleBlock =
   | { kind: "p" | "h2" | "cta" | "note"; text: string; refs?: string[] }
@@ -78,6 +79,7 @@ export const categories: Category[] = [
 ];
 
 export const articles: Article[] = [
+  kbeautyTonerPadsArticle,
   seoulHeadSpaArticle,
   seoulKbeautyWorthBuyingArticle,
   seoulKbeautyPopupsArticle,
