@@ -13,6 +13,7 @@ import { koreanCushionFoundationArticle } from "./korean-cushion-foundation-arti
 import { seoulBeautyDayRouteArticle } from "./seoul-beauty-day-route-article";
 import { kbeautyBagCharmsArticle } from "./kbeauty-bag-charms-article";
 import { koreanLipTintFinishesArticle } from "./korean-lip-tint-finishes-article";
+import { myeongdongVsSeongsuArticle } from "./myeongdong-vs-seongsu-article";
 
 export type ArticleBlock =
   | { kind: "p" | "h2" | "cta" | "note"; text: string; refs?: string[] }
@@ -84,6 +85,7 @@ export const categories: Category[] = [
 ];
 
 export const articles: Article[] = [
+  myeongdongVsSeongsuArticle,
   koreanLipTintFinishesArticle,
   kbeautyBagCharmsArticle,
   seoulBeautyDayRouteArticle,
