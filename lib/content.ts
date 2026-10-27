@@ -16,6 +16,7 @@ import { koreanLipTintFinishesArticle } from "./korean-lip-tint-finishes-article
 import { myeongdongVsSeongsuArticle } from "./myeongdong-vs-seongsu-article";
 import { tryKbeautyWithoutHaulArticle } from "./try-kbeauty-without-a-haul-article";
 import { hwanjeolgiBeautyShelvesArticle } from "./hwanjeolgi-beauty-shelves-article";
+import { seoulBeautyAppointmentTimingArticle } from "./seoul-beauty-appointment-timing-article";
 
 export type ArticleBlock =
   | { kind: "p" | "h2" | "cta" | "note"; text: string; refs?: string[] }
@@ -87,6 +88,7 @@ export const categories: Category[] = [
 ];
 
 export const articles: Article[] = [
+  seoulBeautyAppointmentTimingArticle,
   hwanjeolgiBeautyShelvesArticle,
   tryKbeautyWithoutHaulArticle,
   myeongdongVsSeongsuArticle,
